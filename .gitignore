@@ -34,3 +34,4 @@ Makefile
 .cproject
 .project
 .settings/
+.vs-code/
