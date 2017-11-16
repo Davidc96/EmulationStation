@@ -122,8 +122,6 @@ bool ISimpleGameListView::input(InputConfig* config, Input input)
 			if(Settings::getInstance()->getBool("QuickSystemSelect"))
 			{
 				onFocusLost();
-				//Load sound from xml
-				Sound::getFromTheme(getTheme(), getName(), "systemscroll")->play();
 				ViewController::get()->goToNextGameList();
 				return true;
 			}
@@ -132,8 +130,6 @@ bool ISimpleGameListView::input(InputConfig* config, Input input)
 			if(Settings::getInstance()->getBool("QuickSystemSelect"))
 			{
 				onFocusLost();
-				//Load sound from xml
-				Sound::getFromTheme(getTheme(), getName(), "systemscroll")->play();
 				ViewController::get()->goToPrevGameList();
 				return true;
 			}
