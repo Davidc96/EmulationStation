@@ -33,7 +33,7 @@ void ISimpleGameListView::onThemeChanged(const std::shared_ptr<ThemeData>& theme
 	mBackground.applyTheme(theme, getName(), "background", ALL);
 	mHeaderImage.applyTheme(theme, getName(), "logo", ALL);
 	mHeaderText.applyTheme(theme, getName(), "logoText", ALL);
-
+	
 	// Remove old theme extras
 	for (auto extra : mThemeExtras)
 	{
@@ -100,22 +100,23 @@ bool ISimpleGameListView::input(InputConfig* config, Input input)
 			return true;
 		}else if(config->isMappedTo("b", input))
 		{
-			if(mCursorStack.size())
-			{
-				populateList(mCursorStack.top()->getParent()->getChildren());
-				setCursor(mCursorStack.top());
-				mCursorStack.pop();
-				Sound::getFromTheme(getTheme(), getName(), "back")->play();
-			}else{
-				onFocusLost();
-				SystemData* systemToView = getCursor()->getSystem();
-				if (systemToView->isCollection())
+			if(Settings::getInstance()->getBool("AllowGoBack")) {		
+				if(mCursorStack.size())
 				{
-					systemToView = CollectionSystemManager::get()->getSystemToView(systemToView);
+					populateList(mCursorStack.top()->getParent()->getChildren());
+					setCursor(mCursorStack.top());
+					mCursorStack.pop();
+					Sound::getFromTheme(getTheme(), getName(), "back")->play();
+				}else{
+					onFocusLost();
+					SystemData* systemToView = getCursor()->getSystem();
+					if (systemToView->isCollection())
+					{
+						systemToView = CollectionSystemManager::get()->getSystemToView(systemToView);
+					}
+					ViewController::get()->goToSystemView(systemToView);
 				}
-				ViewController::get()->goToSystemView(systemToView);
 			}
-
 			return true;
 		}else if(config->isMappedTo("right", input))
 		{
