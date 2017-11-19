@@ -127,6 +127,9 @@ void Settings::setDefaults()
 	mBoolMap["ForceKiosk"] = false;
 	mBoolMap["ForceKid"] = false;
 	mBoolMap["hideQuitMenuOnKidUI"] = false;
+	
+	mBoolMap["AllowGoBack"] = true;
+	
 }
 
 template <typename K, typename V>
