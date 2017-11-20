@@ -384,6 +384,12 @@ void GuiMenu::openOtherSettings()
 	s->addWithLabel("SHOW FRAMERATE", framerate);
 	s->addSaveFunc([framerate] { Settings::getInstance()->setBool("DrawFramerate", framerate->getState()); });
 
+	//allowgoback
+	auto allowgoback = std::make_shared<SwitchComponent>(mWindow);
+	allowgoback->setState(Settings::getInstance()->getBool("AllowGoBack"));
+	s->addWithLabel("ALLOW GO SYSTEM MENU (GAMELIST VIEW ONLY)", allowgoback);
+	s->addSaveFunc([allowgoback] { Settings::getInstance()->setBool("AllowGoBack", allowgoback->getState()); });
+
 
 	mWindow->pushGui(s);
 
