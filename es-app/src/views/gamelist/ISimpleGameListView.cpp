@@ -5,6 +5,7 @@
 #include "Settings.h"
 #include "Sound.h"
 #include "SystemData.h"
+#include "Log.h"
 
 ISimpleGameListView::ISimpleGameListView(Window* window, FileData* root) : IGameListView(window, root),
 	mHeaderText(window), mHeaderImage(window), mBackground(window)
@@ -79,7 +80,7 @@ bool ISimpleGameListView::input(InputConfig* config, Input input)
 {
 	if(input.value != 0)
 	{
-		LOG(LogInfo) <<input.string();
+		LOG(LogInfo) << input.string();
 		if(config->isMappedTo("a", input))
 		{
 			FileData* cursor = getCursor();
