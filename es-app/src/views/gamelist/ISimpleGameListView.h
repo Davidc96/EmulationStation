@@ -6,7 +6,6 @@
 #include "components/TextComponent.h"
 #include "views/gamelist/IGameListView.h"
 #include <stack>
-#include <stdio>
 
 class ISimpleGameListView : public IGameListView
 {
