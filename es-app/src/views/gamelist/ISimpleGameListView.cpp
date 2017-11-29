@@ -79,6 +79,7 @@ bool ISimpleGameListView::input(InputConfig* config, Input input)
 {
 	if(input.value != 0)
 	{
+		std::cout << input.string() << std::endl;
 		if(config->isMappedTo("a", input))
 		{
 			FileData* cursor = getCursor();
